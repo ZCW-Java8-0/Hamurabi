@@ -34,6 +34,12 @@ public class Hammurabi {
         }
 
 
+        //Ask the questions in this order. No backing up. No changing answers.
+        int askHowManyAcresToBuy(int price, int bushels)
+        int askHowManyAcresToSell(int acresOwned)
+        int askHowMuchGrainToFeedPeople(int bushels)
+        int askHowManyAcresToPlant(int acresOwned, int population, int bushels)
+
 
 
 
