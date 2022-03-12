@@ -8,13 +8,35 @@ public class Hammurabi {
     Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int people = 100;
-        int bushels = 2800; //grain in storage
-        int land = 1000;  //land value is 19 bushels/acre
+
         new Hammurabi().playGame();
     }
 
     void playGame() {
+        int population = 100;
+        int grain = 2800; //bushels of grain in storage
+        int land = 1000;
+        int valueBushelsPerAcre = 19; // land value is 19 bushels/acre
+        int years = 10;
+
+        for (int i = 0; i < years ; i ++) {
+
+
+            System.out.println("O great Hammurabi!\n" +
+                    "You are in year 1 of your ten year rule.\n" +
+                    "In the previous year 0 people starved to death.\n" +
+                    "In the previous year 5 people entered the kingdom.\n" +
+                    "The population is now 100.\n" +
+                    "We harvested 3000 bushels at 3 bushels per acre.\n" +
+                    "Rats destroyed 200 bushels, leaving 2800 bushels in storage.\n" +
+                    "The city owns 1000 acres of land.\n" +
+                    "Land is currently worth 19 bushels per acre.");
+        }
+
+
+
+
+
 
     }
 }
