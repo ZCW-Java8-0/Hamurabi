@@ -19,7 +19,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         return population;
     }
 
-    public void setPopulation(int population) {q
+    public void setPopulation(int population) {
         this.population = population;
     }
 
