@@ -1,5 +1,3 @@
-package hammurabi.src.main.java;
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -48,11 +46,14 @@ public class Hammurabi {
         int askHowManyAcresToBuy(int price, int bushels)
         int askHowManyAcresToSell(int acresOwned)
         int askHowMuchGrainToFeedPeople(int bushels)
-        int askHowManyAcresToPlant(int acresOwned, int population, int bushels)
 
-
-
-
-
+    public static int askHowManyAcresToPlant(int acresOwned, int population, int bushels) {
+       int acresToPlant = 0;
+        if(acresToPlant > acresOwned) {
+        System.out.println(" O Hammurabi, but you only have" + acresOwned + " acres for which to plant!");
+        } else if ((acresToPlant > 10*  population)) {
+            System.out.println(" O Hammurabi, but you only have" + acresOwned + " acres for which to increase your grain!");
+        } else if (acresToPlant < 2 * bushels)
     }
 
+}
