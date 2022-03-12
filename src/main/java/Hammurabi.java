@@ -8,13 +8,21 @@ public class Hammurabi {
     Scanner scanner = new Scanner(System.in);
 
     public int plagueDeath (int population) {
-        return randomChance(15) ? population/2 : population;
+        return randomChance(15) ? population/2 : 0;
+    }
+
+    public int newCostOfLand(){
+        return null;
+    }
+
+    public int harvest(int acres, int bushelsUsedAsSeed){
+        return null;
     }
 
     public int grainEatenByRats(int bushels){
         return randomChance(40)
-                ? (100-(rand.nextInt(20)+10))*bushels / 100
-                :bushels;
+                ? (rand.nextInt(20)+10)*bushels / 100
+                :0;
     }
 
     public boolean randomChance(double chanceOfOccurrence){
