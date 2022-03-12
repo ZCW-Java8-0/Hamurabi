@@ -12,16 +12,16 @@ public class Hammurabi {
     }
 
     public int newCostOfLand(){
-        return null;
+        return rand.nextInt(7)+17; //bound is exclusive
     }
 
-    public int harvest(int acres, int bushelsUsedAsSeed){
-        return null;
+    public int harvest(int acresPlantedWithSeeds){
+        return (rand.nextInt(6)+1)*acresPlantedWithSeeds;
     }
 
     public int grainEatenByRats(int bushels){
         return randomChance(40)
-                ? (rand.nextInt(20)+10)*bushels / 100
+                ? (rand.nextInt(21)+10)*bushels / 100 //bound is exclusive
                 :0;
     }
 
