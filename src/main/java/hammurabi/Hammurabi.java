@@ -9,21 +9,19 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
     Scanner scanner = new Scanner(System.in);
 
 
-
-
     public static void main(String[] args) { // required in every Java program
         new Hammurabi().playGame();
     }
 
 
     void playGame() {
+        int years = 1;
         int population = 100;
         int bushels = 2800;
         int acres = 1000;
         int price = 19;
         int acresBought = 0;
         int acresSold = 0;
-        int years = 1;
         int number_of_plague = 0;
         int bushelsFedToPeople = 0;
         int harvest = 0;
@@ -31,39 +29,39 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         int immigrants = 0;
         int grainEaten = 0;
 
-while (years <= 10) {
-    System.out.println("O great Hammurabi!");
-    System.out.println("You are in year" + years + "of your 10 year rule.");
-    System.out.println("In the previous year," + deaths + "people starved to death.");
-    System.out.println("In the previous year" + immigrants + "people entered the kingdom.");
-    System.out.println("The population is now" + population + ".");
-    System.out.println("We harvested" + harvest + "bushels at 3 bushels per acre.");
-    System.out.println("Rats destroyed" + grainEaten + "bushels, leaving" + bushels + "bushels in storage.");
-    System.out.println("The city owns" + acres +  "acres of land.");
-    System.out.println("Land is currently worth" + price + "bushels per acre.");
-    // declare local variables here: grain, population, etc.
-    // statements go after the declations
 
-    acresBought = askHowManyAcresToBuy(price, bushels);
-    if (acresBought == 0) {
-        askHowManyAcresToSell(acres);
-    }
-    bushelsFedToPeople = howMuchGrainToFeedPeople(bushels);
-    acres = acres - askHowManyAcresToPlant(acres, population, bushels);
-    population = population - plagueDeaths(population);
-    deaths = starvationDeaths(population, bushelsFedToPeople);
-    population = population - deaths;
-    if (uprising(population, deaths)) break;
-    immigrants = immigrants(population, acres, bushels);
-    population = population + immigrants;
-    bushels = bushels + harvest(acres, bushels);
-    bushels = bushels - grainEatenByRats(bushels);
-    price = newCostOfLand();
-    years++;
-}
+        System.out.println("O great Hammurabi!");
+        System.out.println("You are in year" + " " + years + " " + "of your 10 year rule.");
+        System.out.println("In the previous year," + " " + deaths + " " + "people starved to death.");
+        System.out.println("In the previous year" + " " + immigrants + " " + "people entered the kingdom.");
+        System.out.println("The population is now" + " " + population + " " + ".");
+        System.out.println("We harvested" + " " + harvest + " " + "bushels at 3 bushels per acre.");
+        System.out.println("Rats destroyed" + " " + grainEaten + " " + "bushels, leaving" + " " + bushels + " " + "bushels in storage.");
+        System.out.println("The city owns" + " " + acres + " " + "acres of land.");
+        System.out.println("Land is currently worth" + " " + price + " " + "bushels per acre.");
+        // declare local variables here: grain, population, etc.
+        // statements go after the declations
+        while (years <= 10) {
+            acresBought = askHowManyAcresToBuy(price, bushels);
+            if (acresBought == 0) {
+                askHowManyAcresToSell(acres);
+            }
+            bushelsFedToPeople = howMuchGrainToFeedPeople(bushels);
+            acres = acres - askHowManyAcresToPlant(acres, population, bushels);
+            population = population - plagueDeaths(population);
+            deaths = starvationDeaths(population, bushelsFedToPeople);
+            population = population - deaths;
+            if (uprising(population, deaths)) break;
+            immigrants = immigrants(population, acres, bushels);
+            population = population + immigrants;
+            bushels = bushels + harvest(acres, bushels);
+            bushels = bushels - grainEatenByRats(bushels);
+            price = newCostOfLand();
+            years++;
+        }
     }
 
-     public int getNumber(String message) {
+    public int getNumber(String message) {
         while (true) {
             System.out.print(message);
             try {
@@ -108,23 +106,24 @@ while (years <= 10) {
         return acresToPlant;
     }
 
-     public Integer plagueDeaths ( int population){
+    public Integer plagueDeaths(int population) {
         //Each year, there is a 15% chance of a horrible plague. When this happens,
         // half your people die. Return the number of plague deaths (possibly zero).
         int number_of_plague = 0;
         if (rand.nextInt(100) > 85) {
-            number_of_plague = Math.floorDiv(population,2);
+            number_of_plague = Math.floorDiv(population, 2);
         }
         return number_of_plague;
     }
-    public Integer starvationDeaths ( int population, int bushelsFedToPeople) {
+
+    public Integer starvationDeaths(int population, int bushelsFedToPeople) {
         //Each person needs 20 bushels of grain to survive. If you feed them more than this,
         //they are happy, but the grain is still gone. You don't get any benefit from having
         //happy subjects. Return the number of deaths from starvation (possibly zero).
-        int deaths =0;
-        int fullPeople = Math.floorDiv(bushelsFedToPeople,20);
-        if(fullPeople >= 0 && fullPeople < population) {
-            deaths = population-(fullPeople);
+        int deaths = 0;
+        int fullPeople = Math.floorDiv(bushelsFedToPeople, 20);
+        if (fullPeople >= 0 && fullPeople < population) {
+            deaths = population - (fullPeople);
         }
         return deaths;
     }
@@ -135,29 +134,29 @@ while (years <= 10) {
         return howManyPeopleStarved > (population * .45);
     }
 
-    public Integer immigrants(int population, int acresOwned, int grainInStorage){
-        int immigrants =  (((20 * acresOwned)+ (grainInStorage)) / ((100 * population) + 1));;
+    public Integer immigrants(int population, int acresOwned, int grainInStorage) {
+        int immigrants = (((20 * acresOwned) + (grainInStorage)) / ((100 * population) + 1));
         //Nobody will come to the city if people are starving (so don't call this method). If everyone
         // is well-fed, compute how many people come to the city as:
         return immigrants;
     }
 
-    public int harvest(int acres, int bushelsUsedAsSeed){
+    public int harvest(int acres, int bushelsUsedAsSeed) {
         int harvest = 0;
         int harvestPercent = rand.nextInt(6, 1) + 1;
         harvest = acres * harvestPercent - bushelsUsedAsSeed; //look at bushelsUsedAsSeed
         return harvest;
     }
 
-    public int grainEatenByRats(int bushels){
+    public int grainEatenByRats(int bushels) {
         int grainEaten = 0;
-        if (rand.nextInt(100) > 60){
+        if (rand.nextInt(100) > 60) {
             grainEaten = (rand.nextInt(10, 30) + 1) * bushels;
         }
         return grainEaten;
     }
 
-    public int newCostOfLand(){
+    public int newCostOfLand() {
         return rand.nextInt(17, 23) + 17;
     }
 
