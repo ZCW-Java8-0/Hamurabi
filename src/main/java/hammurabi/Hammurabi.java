@@ -29,6 +29,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         int deaths = 0;
         int immigrants = 0;
         int grainEaten = 0;
+        int acresPlanted = 0;
 
         while (years <= 10) {
         System.out.println("O great Hammurabi!");
@@ -44,14 +45,19 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         // statements go after the declations
 
             acresBought = askHowManyAcresToBuy(price, bushels);
+            acres -= acresBought;
             if (acresBought == 0) {
-                askHowManyAcresToSell(acres);
+                acresSold = askHowManyAcresToSell(acres);
+                acres -= acresSold;
             }
             bushelsFedToPeople = howMuchGrainToFeedPeople(bushels);
-            acres = acres - askHowManyAcresToPlant(acres, population, bushels);
-            population = population - plagueDeaths(population);
+            bushels -= bushelsFedToPeople;
+            acresPlanted = askHowManyAcresToPlant(acres, population, bushels);
+            acres -= acresPlanted;
+            number_of_plague = plagueDeaths(population);
+            population -= number_of_plague;
             deaths = starvationDeaths(population, bushelsFedToPeople);
-            population = population - deaths;
+            population -= deaths;
             if (uprising(population, deaths)) break;
             immigrants = immigrants(population, acres, bushels);
             population += immigrants;
