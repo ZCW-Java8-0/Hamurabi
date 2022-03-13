@@ -12,8 +12,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
     int bushels = 2800;
     int acres = 1000;
     int price = 19;
-    int acresBought;
-    int acresSold;
+
 
     public int getPopulation() {
         return population;
@@ -54,7 +53,8 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
 
 
     void playGame() {
-
+        int acresBought;
+        int acresSold;
 
         System.out.println("O great Hammurabi!");
         System.out.println("You are in year one of your 10 year rule.");
@@ -76,7 +76,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         askHowManyAcresToPlant(10, 5, 5);
     }
 
-    int getNumber(String message) {
+     public int getNumber(String message) {
         while (true) {
             System.out.print(message);
             try {
@@ -87,7 +87,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         }
     }
 
-    int askHowManyAcresToBuy(int price, int bushels) {
+    public int askHowManyAcresToBuy(int price, int bushels) {
         int acresBought = getNumber("How many acres do you want to buy? \n");
         while ((price * acresBought) > bushels) {
             acresBought = getNumber("You are broke, how many acres CAN you buy??? \n");
@@ -105,7 +105,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
     }
 
 
-    int howMuchGrainToFeedPeople(int bushels) {
+    public int howMuchGrainToFeedPeople(int bushels) {
         int fedGrain = getNumber("How much grain do you want to feed your people? \n");
         while (fedGrain > bushels) {
             fedGrain = getNumber("You don't have enough grain to feed the people, how much CAN you actually feed them? \n");
@@ -113,7 +113,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         return fedGrain;
     }
 
-    int askHowManyAcresToPlant(int acresOwned, int population, int bushels) {
+    public int askHowManyAcresToPlant(int acresOwned, int population, int bushels) {
         int acresToPlant = getNumber("How many acres do you want to plant? \n");
         while (acresToPlant > acresOwned || acresToPlant > (bushels / 2) || (population / 10) < acresToPlant) {
             acresToPlant = getNumber("Nope, try again.... \n");
@@ -121,7 +121,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         return acresToPlant;
     }
 
-    Integer plagueDeaths ( int population){
+     public Integer plagueDeaths ( int population){
         //Each year, there is a 15% chance of a horrible plague. When this happens,
         // half your people die. Return the number of plague deaths (possibly zero).
         int number_of_plague = 0;
@@ -130,7 +130,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         }
         return number_of_plague;
     }
-    Integer starvationDeaths ( int population, int bushelsFedToPeople) {
+    public Integer starvationDeaths ( int population, int bushelsFedToPeople) {
         //Each person needs 20 bushels of grain to survive. If you feed them more than this,
         //they are happy, but the grain is still gone. You don't get any benefit from having
         //happy subjects. Return the number of deaths from starvation (possibly zero).
@@ -142,13 +142,13 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         return deaths;
     }
 
-    boolean uprising(int population, int howManyPeopleStarved) {
+    public boolean uprising(int population, int howManyPeopleStarved) {
         //Return true if more than 45% of the people starve. (This will cause you to be immediately
         // thrown out of office, ending the game.)
         return howManyPeopleStarved > (population * .45);
     }
 
-    Integer immigrants(int population, int acresOwned, int grainInStorage){
+    public Integer immigrants(int population, int acresOwned, int grainInStorage){
         //Nobody will come to the city if people are starving (so don't call this method). If everyone
         // is well-fed, compute how many people come to the city as:
         return(((20 * acresOwned)+ (grainInStorage)) / ((100 * population) + 1));
