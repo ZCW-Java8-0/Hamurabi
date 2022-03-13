@@ -15,6 +15,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
 
 
     void playGame() {
+
         int years = 1;
         int population = 100;
         int bushels = 2800;
@@ -29,7 +30,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         int immigrants = 0;
         int grainEaten = 0;
 
-
+        while (years <= 10) {
         System.out.println("O great Hammurabi!");
         System.out.println("You are in year" + " " + years + " " + "of your 10 year rule.");
         System.out.println("In the previous year," + " " + deaths + " " + "people starved to death.");
@@ -41,7 +42,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         System.out.println("Land is currently worth" + " " + price + " " + "bushels per acre.");
         // declare local variables here: grain, population, etc.
         // statements go after the declations
-        while (years <= 10) {
+
             acresBought = askHowManyAcresToBuy(price, bushels);
             if (acresBought == 0) {
                 askHowManyAcresToSell(acres);
@@ -51,11 +52,13 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
             population = population - plagueDeaths(population);
             deaths = starvationDeaths(population, bushelsFedToPeople);
             population = population - deaths;
-            if (uprising(population, deaths)) break;
+            if (uprising(population, deaths)) //break;
             immigrants = immigrants(population, acres, bushels);
-            population = population + immigrants;
-            bushels = bushels + harvest(acres, bushels);
-            bushels = bushels - grainEatenByRats(bushels);
+            population += immigrants;
+            harvest(acres, bushels);
+            bushels += harvest;
+            grainEatenByRats(bushels);
+            bushels -= grainEaten;
             price = newCostOfLand();
             years++;
         }
@@ -143,7 +146,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
 
     public int harvest(int acres, int bushelsUsedAsSeed) {
         int harvest = 0;
-        int harvestPercent = rand.nextInt(6, 1) + 1;
+        int harvestPercent = rand.nextInt(1, 6) + 1;
         harvest = acres * harvestPercent - bushelsUsedAsSeed; //look at bushelsUsedAsSeed
         return harvest;
     }
