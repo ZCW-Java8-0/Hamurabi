@@ -75,6 +75,6 @@ public class Hammurabi {
 
     public boolean randomChance(double chanceOfOccurrence){
         Random rand = new Random();
-        return rand.nextDouble()>(chanceOfOccurrence/100);
+        return rand.nextDouble()<(chanceOfOccurrence/100);
     }
 }
