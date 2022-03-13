@@ -52,12 +52,12 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
             population = population - plagueDeaths(population);
             deaths = starvationDeaths(population, bushelsFedToPeople);
             population = population - deaths;
-            if (uprising(population, deaths)) //break;
+            if (uprising(population, deaths)) break;
             immigrants = immigrants(population, acres, bushels);
             population += immigrants;
-            harvest(acres, bushels);
+            harvest = harvest(acres, bushels);
             bushels += harvest;
-            grainEatenByRats(bushels);
+            grainEaten = grainEatenByRats(bushels);
             bushels -= grainEaten;
             price = newCostOfLand();
             years++;
